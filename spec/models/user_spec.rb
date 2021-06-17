@@ -1,6 +1,10 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
+  before do
+    @user = FactoryBot.build(:user)
+  end
+  
   describe "ユーザー新規登録/ユーザー情報" do
     it "ニックネームが必須であること" do
     end
@@ -43,5 +47,5 @@ RSpec.describe User, type: :model do
     it "トップページ（商品一覧ページ）ヘッダーの、「ログアウト」ボタンをクリックすると、ログアウトができること" do
     end
   end
-  
+
 end

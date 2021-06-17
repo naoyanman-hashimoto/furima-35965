@@ -3,15 +3,16 @@
 
 ## users テーブル
 
-| Column             | Type    | Options     |
-| ------------------ | ------- | ----------- |
-| nickname           | string  | null: false |
-| email              | string  | null: false |
-| password           | string  | null: false |
-| encrypted_password | string  | null: false |
-| name_full_width    | string  | null: false |
-| name_half_width    | string  | null: false |
-| birthday           | integer | null: false |
+| Column             | Type    | Options                   |
+| ------------------ | ------- | ------------------------- |
+| nickname           | string  | null: false               |
+| email              | string  | null: false, unique: true |
+| encrypted_password | string  | null: false               |
+| first_name         | string  | null: false               |
+| last_name          | string  | null: false               |
+| kana_first_name    | string  | null: false               |
+| kana_last_name     | string  | null: false               |
+| date               | integer | null: false               |
 
 ### Association
 
@@ -21,17 +22,17 @@
 
 ## products テーブル
 
-| Column          | Type       | Options                        |
-| --------------- | ---------- | ------------------------------ |
-| product_code    | text       | null: false                    |
-| description     | text       | null: false                    |
-| category        | string     | null: false                    |
-| status          | string     | null: false                    |
-| burden          | string     | null: false                    |
-| shipment_source | string     | null: false                    |
-| time_required   | string     | null: false                    |
-| price           | integer    | null: false                    |
-| user            | references | null: false, foreign_key: true |
+| Column             | Type       | Options                        |
+| ------------------ | ---------- | ------------------------------ |
+| product_name       | string     | null: false                    |
+| description        | text       | null: false                    |
+| category_id        | integer    | null: false                    |
+| status_id          | integer    | null: false                    |
+| burden_id          | integer    | null: false                    |
+| shipment_source_id | integer    | null: false                    |
+| time_required_id   | integer    | null: false                    |
+| price              | integer    | null: false                    |
+| user               | references | null: false, foreign_key: true |
 
 ### Association
 
@@ -45,25 +46,25 @@
 | Column         | Type       | Options                        |
 | -------------- | ---------- | ------------------------------ |
 | user           | references | null: false, foreign_key: true |
-| product_code   | references | null: false, foreign_key: true |
+| product_name   | references | null: false, foreign_key: true |
 
 
 ### Association
 
 - belongs_to :user
-- belongs_to :buyer
+- belongs_to :product
 - has_one : shipping_address
 
 
 ## shipping_address テーブル
 
-| Column         | Type       | Options                        |
-| -------------- | ---------- | ------------------------------ |
-| postal_code    | integer    | null: false                    |
-| prefectures    | string     | null: false                    |
-| address        | string     | null: false                    |
-| Building name  | string     |                                |
-| phone_number   | integer    | null: false                    |
+| Column             | Type       | Options                        |
+| ------------------ | ---------- | ------------------------------ |
+| postal_code        | string     | null: false                    |
+| shipment_source_id | integer    | null: false                    |
+| address            | string     | null: false                    |
+| building name      | string     |                                |
+| phone_number       | string     | null: false                    |
 
 ### Association
 

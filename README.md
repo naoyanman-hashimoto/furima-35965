@@ -63,6 +63,7 @@
 | buyer              | references | null: false, foreign_key: true |
 | postal_code        | string     | null: false                    |
 | shipment_source_id | integer    | null: false                    |
+| municipalities     | string     | null: false                    |
 | address            | string     | null: false                    |
 | building name      | string     |                                |
 | phone_number       | string     | null: false                    |

@@ -12,7 +12,7 @@
 | last_name          | string  | null: false               |
 | kana_first_name    | string  | null: false               |
 | kana_last_name     | string  | null: false               |
-| date               | integer | null: false               |
+| birthday           | date    | null: false               |
 
 ### Association
 
@@ -46,7 +46,7 @@
 | Column         | Type       | Options                        |
 | -------------- | ---------- | ------------------------------ |
 | user           | references | null: false, foreign_key: true |
-| product_name   | references | null: false, foreign_key: true |
+| product        | references | null: false, foreign_key: true |
 
 
 ### Association
@@ -60,6 +60,7 @@
 
 | Column             | Type       | Options                        |
 | ------------------ | ---------- | ------------------------------ |
+| buyer              | references | null: false, foreign_key: true |
 | postal_code        | string     | null: false                    |
 | shipment_source_id | integer    | null: false                    |
 | address            | string     | null: false                    |

@@ -1,4 +1,6 @@
 class Product < ApplicationRecord
+  extend ActiveHash::Associations::ActiveRecordExtensions
+  belongs_to :category
   belongs_to :user
   has_one_attached :image
 
@@ -13,4 +15,5 @@ class Product < ApplicationRecord
     validates :price
     validates :image
   end
+  validates :category_id, numericality: { other_than: 1 } 
 end

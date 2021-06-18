@@ -65,7 +65,7 @@
 | shipment_source_id | integer    | null: false                    |
 | municipalities     | string     | null: false                    |
 | address            | string     | null: false                    |
-| building name      | string     |                                |
+| building_name      | string     |                                |
 | phone_number       | string     | null: false                    |
 
 ### Association

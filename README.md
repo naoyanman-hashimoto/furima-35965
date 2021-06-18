@@ -16,7 +16,7 @@
 
 ### Association
 
-- has_many :items
+- has_many :products
 - has_many :buyers
 
 

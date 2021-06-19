@@ -61,22 +61,22 @@ RSpec.describe Product, type: :model do
         it '価格は、¥300~¥9,999,999の間のみ保存可能であること(¥300以下では保存できない)' do
           @product.price = 100
           @product.valid?
-          expect(@product.errors.full_messages).to include("Price is out of setting range")
+          expect(@product.errors.full_messages).to include('Price is out of setting range')
         end
         it '価格は、¥300~¥9,999,999の間のみ保存可能であること(¥9,999,999以上では保存できない)' do
-          @product.price = 100000000
+          @product.price = 100_000_000
           @product.valid?
-          expect(@product.errors.full_messages).to include("Price is out of setting range")
+          expect(@product.errors.full_messages).to include('Price is out of setting range')
         end
         it '価格は半角数値のみ保存可能であること(漢数字では保存できない)' do
           @product.price = '千円'
           @product.valid?
-          expect(@product.errors.full_messages).to include("Price is out of setting range")
+          expect(@product.errors.full_messages).to include('Price is out of setting range')
         end
         it '価格は半角数値のみ保存可能であること(全角数値では保存できない)' do
           @product.price = '１０００'
           @product.valid?
-          expect(@product.errors.full_messages).to include("Price is out of setting range")
+          expect(@product.errors.full_messages).to include('Price is out of setting range')
         end
       end
     end

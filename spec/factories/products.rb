@@ -7,7 +7,6 @@ FactoryBot.define do
     burden_id {2}
     shipment_source_id {2}
     time_required_id {2}
-
     price {1000}
     association :user
 

@@ -29,11 +29,11 @@ class ProductsController < ApplicationController
 
   def update
     @product = Product.find(params[:id])
-  if @product.update(product_params)
-    redirect_to root_path
-  else
-    render :edit
-  end
+    if @product.update(product_params)
+      redirect_to root_path
+    else
+      render :edit
+    end
   end
 
   private
@@ -45,8 +45,6 @@ class ProductsController < ApplicationController
 
   def move_to_index
     product = Product.find(params[:id])
-    unless current_user.id == product.user_id
-      redirect_to action: :index
-    end
+    redirect_to action: :index unless current_user.id == product.user_id
   end
 end

@@ -1,6 +1,6 @@
 class BuyerShippingAddress
   include ActiveModel::Model
-  attr_accessor :postal_code, :shipment_source_id, :municipalities, :address, :building_name, :phone_number, :user_id, :product_id
+  attr_accessor :postal_code, :shipment_source_id, :municipalities, :address, :building_name, :phone_number, :user_id, :product_id, :token
 
   with_options presence: true do
     validates :postal_code, format: {with: /\A[0-9]{3}-[0-9]{4}\z/, message: "is invalid. Enter it as follows (e.g. 123-4567)"}
@@ -12,6 +12,7 @@ class BuyerShippingAddress
                format: {with: /\A[0-9]+\z/, message: "is invalid. Input only number"}
     validates :user_id
     validates :product_id
+    validates :token
   end
 
   def save

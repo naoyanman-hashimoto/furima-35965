@@ -1,5 +1,5 @@
 class BuyersController < ApplicationController
-  before_action :authenticate_user!, only: [:index]
+  before_action :authenticate_user!, only: [:index, :create]
   before_action :set_product, only: [:index, :create]
   before_action :move_to_index, only: [:index, :create]
   before_action :redirect_to_index, only: [:index, :create]
@@ -45,6 +45,6 @@ class BuyersController < ApplicationController
   end
 
   def redirect_to_index
-    redirect_to root_path if current_user.id != @product.user_id && @product.buyer.present?
+    redirect_to root_path if @product.buyer.present?
   end
 end

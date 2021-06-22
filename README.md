@@ -32,7 +32,7 @@
 | shipment_source_id | integer    | null: false                    |
 | time_required_id   | integer    | null: false                    |
 | price              | integer    | null: false                    |
-| user_id            | references | null: false, foreign_key: true |
+| user               | references | null: false, foreign_key: true |
 
 ### Association
 
@@ -45,8 +45,8 @@
 
 | Column         | Type       | Options                        |
 | -------------- | ---------- | ------------------------------ |
-| user_id        | references | null: false, foreign_key: true |
-| product_id     | references | null: false, foreign_key: true |
+| user           | references | null: false, foreign_key: true |
+| product        | references | null: false, foreign_key: true |
 
 
 ### Association
@@ -60,7 +60,7 @@
 
 | Column             | Type       | Options                        |
 | ------------------ | ---------- | ------------------------------ |
-| buyer_id           | references | null: false, foreign_key: true |
+| buyer              | references | null: false, foreign_key: true |
 | postal_code        | string     | null: false                    |
 | shipment_source_id | integer    | null: false                    |
 | municipalities     | string     | null: false                    |

@@ -1,5 +1,8 @@
 class BuyersController < ApplicationController
+  before_action :authenticate_user!, only: [:index]
   before_action :set_product, only: [:index, :create]
+  before_action :move_to_index, only: [:index, :create]
+  before_action :redirect_to_index, only: [:index, :create]
 
   def index
     @buyer_shipping_address = BuyerShippingAddress.new
@@ -35,5 +38,13 @@ class BuyersController < ApplicationController
       card: buyer_params[:token],
       currency: 'jpy'
     )
+  end
+
+  def move_to_index
+    redirect_to root_path if current_user.id == @product.user_id
+  end
+
+  def redirect_to_index
+    redirect_to root_path if current_user.id != @product.user_id && @product.buyer.present?
   end
 end

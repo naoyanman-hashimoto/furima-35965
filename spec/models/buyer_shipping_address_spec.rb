@@ -26,9 +26,9 @@ RSpec.describe BuyerShippingAddress, type: :model do
           expect(@buyer_shipping_address.errors.full_messages).to include("Postal code can't be blank")
         end
         it '郵便番号(postal_code)は、「3桁ハイフン4桁」の半角文字列出ないと購入できない' do
-          @buyer_shipping_address.postal_code = 1234567
+          @buyer_shipping_address.postal_code = 1_234_567
           @buyer_shipping_address.valid?
-          expect(@buyer_shipping_address.errors.full_messages).to include("Postal code is invalid. Enter it as follows (e.g. 123-4567)")
+          expect(@buyer_shipping_address.errors.full_messages).to include('Postal code is invalid. Enter it as follows (e.g. 123-4567)')
         end
         it '都道府県(shipment_source_id)が空では購入できない' do
           @buyer_shipping_address.shipment_source_id = 1
@@ -53,17 +53,17 @@ RSpec.describe BuyerShippingAddress, type: :model do
         it '電話番号は、10桁以下では購入できない' do
           @buyer_shipping_address.phone_number = '0901234'
           @buyer_shipping_address.valid?
-          expect(@buyer_shipping_address.errors.full_messages).to include("Phone number is too short (minimum is 11 characters)")
+          expect(@buyer_shipping_address.errors.full_messages).to include('Phone number is too short (minimum is 11 characters)')
         end
         it '電話番号は、11桁以上では購入できない' do
           @buyer_shipping_address.phone_number = '09012345678910'
           @buyer_shipping_address.valid?
-          expect(@buyer_shipping_address.errors.full_messages).to include("Phone number is too long (maximum is 11 characters)")
+          expect(@buyer_shipping_address.errors.full_messages).to include('Phone number is too long (maximum is 11 characters)')
         end
         it '電話番号は、全角数値では購入できない' do
           @buyer_shipping_address.phone_number = '０９０１２３４５６７８'
           @buyer_shipping_address.valid?
-          expect(@buyer_shipping_address.errors.full_messages).to include("Phone number is invalid. Input only number")
+          expect(@buyer_shipping_address.errors.full_messages).to include('Phone number is invalid. Input only number')
         end
         it 'tokenが空では購入できない' do
           @buyer_shipping_address.token = nil
